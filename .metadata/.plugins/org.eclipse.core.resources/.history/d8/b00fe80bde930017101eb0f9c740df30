@@ -40,11 +40,6 @@ public class RosWrapper {
 		}	
 	}
 	
-	public void publishOnTopic(String topic, RosMessage message) {
-		Topic tmp = new Topic(this.rosObject, topic, message.getMessageType());
-		tmp.publish(message.getMessage());
-	}
-	
 	public static void main(String[] args) {
 		System.out.println("Just a runnable Library ;)");
 	}
