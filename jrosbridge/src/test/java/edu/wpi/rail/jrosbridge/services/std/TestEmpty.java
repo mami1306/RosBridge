@@ -8,8 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import edu.wpi.rail.jrosbridge.services.ServiceResponse;
+import jrosbridge.services.ServiceRequest;
+import jrosbridge.services.ServiceResponse;
+import jrosbridge.services.std.Empty;
 
 public class TestEmpty {
 

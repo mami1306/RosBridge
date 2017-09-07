@@ -8,6 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
+import jrosbridge.primitives.Duration;
+import jrosbridge.primitives.TimeBase;
+
 public class TestDuration {
 
 	private Duration empty, d1, d2, d3;

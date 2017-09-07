@@ -11,7 +11,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.geometry.Point32;
+import jrosbridge.messages.geometry.Polygon;
 
 public class TestPolygon {
 

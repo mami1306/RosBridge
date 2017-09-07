@@ -8,8 +8,10 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
-import edu.wpi.rail.jrosbridge.primitives.Primitive;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.std.Header;
+import jrosbridge.messages.std.String;
+import jrosbridge.primitives.Primitive;
 
 public class TestHeader {
 
@@ -18,14 +20,14 @@ public class TestHeader {
 	@Before
 	public void setUp() {
 		empty = new Header();
-		h1 = new Header(5, new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
+		h1 = new Header(5, new jrosbridge.primitives.Time(10, 20),
 				"test");
 	}
 
 	@Test
 	public void testConstructor() {
 		assertEquals(0, empty.getSeq());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(),
+		assertEquals(new jrosbridge.primitives.Time(),
 				empty.getStamp());
 		assertEquals("", empty.getFrameID());
 
@@ -38,8 +40,8 @@ public class TestHeader {
 				0,
 				Primitive.toUInt32(empty.toJsonObject()
 						.getJsonNumber(Header.FIELD_SEQ).longValue()));
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(),
-				edu.wpi.rail.jrosbridge.primitives.Time.fromJsonObject(empty
+		assertEquals(new jrosbridge.primitives.Time(),
+				jrosbridge.primitives.Time.fromJsonObject(empty
 						.toJsonObject().getJsonObject(Header.FIELD_STAMP)));
 		assertEquals("", empty.toJsonObject().getString(Header.FIELD_FRAME_ID));
 
@@ -49,7 +51,7 @@ public class TestHeader {
 	@Test
 	public void testIntTimeAndStringConstructor() {
 		assertEquals(5, h1.getSeq());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
+		assertEquals(new jrosbridge.primitives.Time(10, 20),
 				h1.getStamp());
 		assertEquals("test", h1.getFrameID());
 
@@ -62,8 +64,8 @@ public class TestHeader {
 				5,
 				Primitive.toUInt32(h1.toJsonObject()
 						.getJsonNumber(Header.FIELD_SEQ).longValue()));
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
-				edu.wpi.rail.jrosbridge.primitives.Time.fromJsonObject(h1
+		assertEquals(new jrosbridge.primitives.Time(10, 20),
+				jrosbridge.primitives.Time.fromJsonObject(h1
 						.toJsonObject().getJsonObject(Header.FIELD_STAMP)));
 		assertEquals("test", h1.toJsonObject().getString(Header.FIELD_FRAME_ID));
 
@@ -72,11 +74,11 @@ public class TestHeader {
 
 	@Test
 	public void testIntTimeAndStringConstructorNegative() {
-		Header h = new Header(-1, new edu.wpi.rail.jrosbridge.primitives.Time(
+		Header h = new Header(-1, new jrosbridge.primitives.Time(
 				10, 20), "test");
 
 		assertEquals(-1, h.getSeq());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
+		assertEquals(new jrosbridge.primitives.Time(10, 20),
 				h.getStamp());
 		assertEquals("test", h.getFrameID());
 
@@ -89,8 +91,8 @@ public class TestHeader {
 				-1,
 				Primitive.toUInt32(h.toJsonObject()
 						.getJsonNumber(Header.FIELD_SEQ).longValue()));
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
-				edu.wpi.rail.jrosbridge.primitives.Time.fromJsonObject(h
+		assertEquals(new jrosbridge.primitives.Time(10, 20),
+				jrosbridge.primitives.Time.fromJsonObject(h
 						.toJsonObject().getJsonObject(Header.FIELD_STAMP)));
 		assertEquals("test", h.toJsonObject().getString(Header.FIELD_FRAME_ID));
 
@@ -203,7 +205,7 @@ public class TestHeader {
 				.add(Header.FIELD_FRAME_ID, h1.getFrameID()).build();
 		Header p = Header.fromJsonObject(jsonObject);
 		assertEquals(h1.getSeq(), p.getSeq());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(),
+		assertEquals(new jrosbridge.primitives.Time(),
 				p.getStamp());
 		assertEquals(h1.getFrameID(), p.getFrameID());
 	}

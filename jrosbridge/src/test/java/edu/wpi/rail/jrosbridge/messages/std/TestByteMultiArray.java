@@ -11,7 +11,11 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.std.ByteMultiArray;
+import jrosbridge.messages.std.MultiArrayDimension;
+import jrosbridge.messages.std.MultiArrayLayout;
+import jrosbridge.messages.std.String;
 
 public class TestByteMultiArray {
 

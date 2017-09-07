@@ -8,7 +8,11 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.geometry.Point;
+import jrosbridge.messages.geometry.Quaternion;
+import jrosbridge.messages.geometry.Transform;
+import jrosbridge.messages.geometry.Vector3;
 
 public class TestTransform {
 

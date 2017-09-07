@@ -8,8 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
-import edu.wpi.rail.jrosbridge.primitives.Time;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.actionlib.GoalID;
+import jrosbridge.primitives.Time;
 
 public class TestGoalID {
 

@@ -8,7 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.std.String;
+import jrosbridge.messages.std.Time;
 
 public class TestTime {
 
@@ -17,19 +19,19 @@ public class TestTime {
 	@Before
 	public void setUp() {
 		empty = new Time();
-		t1 = new Time(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20));
+		t1 = new Time(new jrosbridge.primitives.Time(10, 20));
 	}
 
 	@Test
 	public void testConstructor() {
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(),
+		assertEquals(new jrosbridge.primitives.Time(),
 				empty.getData());
 
 		assertEquals("{\"data\":{\"secs\":0,\"nsecs\":0}}", empty.toString());
 
 		assertEquals(1, empty.toJsonObject().size());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(),
-				edu.wpi.rail.jrosbridge.primitives.Time.fromJsonObject(empty
+		assertEquals(new jrosbridge.primitives.Time(),
+				jrosbridge.primitives.Time.fromJsonObject(empty
 						.toJsonObject().getJsonObject(Time.FIELD_DATA)));
 
 		assertEquals(Time.TYPE, empty.getMessageType());
@@ -37,14 +39,14 @@ public class TestTime {
 
 	@Test
 	public void testTimeConstructor() {
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
+		assertEquals(new jrosbridge.primitives.Time(10, 20),
 				t1.getData());
 
 		assertEquals("{\"data\":{\"secs\":10,\"nsecs\":20}}", t1.toString());
 
 		assertEquals(1, t1.toJsonObject().size());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(10, 20),
-				edu.wpi.rail.jrosbridge.primitives.Time.fromJsonObject(t1
+		assertEquals(new jrosbridge.primitives.Time(10, 20),
+				jrosbridge.primitives.Time.fromJsonObject(t1
 						.toJsonObject().getJsonObject(Time.FIELD_DATA)));
 
 		assertEquals(Time.TYPE, t1.getMessageType());
@@ -126,7 +128,7 @@ public class TestTime {
 	public void testFromJsonObjectNoData() {
 		JsonObject jsonObject = Json.createObjectBuilder().build();
 		Time data = Time.fromJsonObject(jsonObject);
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Time(),
+		assertEquals(new jrosbridge.primitives.Time(),
 				data.getData());
 	}
 }

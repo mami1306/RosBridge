@@ -8,7 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.std.Duration;
+import jrosbridge.messages.std.String;
 
 public class TestDuration {
 
@@ -17,20 +19,20 @@ public class TestDuration {
 	@Before
 	public void setUp() {
 		empty = new Duration();
-		t1 = new Duration(new edu.wpi.rail.jrosbridge.primitives.Duration(10,
+		t1 = new Duration(new jrosbridge.primitives.Duration(10,
 				20));
 	}
 
 	@Test
 	public void testConstructor() {
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Duration(),
+		assertEquals(new jrosbridge.primitives.Duration(),
 				empty.getData());
 
 		assertEquals("{\"data\":{\"secs\":0,\"nsecs\":0}}", empty.toString());
 
 		assertEquals(1, empty.toJsonObject().size());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Duration(),
-				edu.wpi.rail.jrosbridge.primitives.Duration
+		assertEquals(new jrosbridge.primitives.Duration(),
+				jrosbridge.primitives.Duration
 						.fromJsonObject(empty.toJsonObject().getJsonObject(
 								Duration.FIELD_DATA)));
 
@@ -39,14 +41,14 @@ public class TestDuration {
 
 	@Test
 	public void testDurationConstructor() {
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Duration(10, 20),
+		assertEquals(new jrosbridge.primitives.Duration(10, 20),
 				t1.getData());
 
 		assertEquals("{\"data\":{\"secs\":10,\"nsecs\":20}}", t1.toString());
 
 		assertEquals(1, t1.toJsonObject().size());
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Duration(10, 20),
-				edu.wpi.rail.jrosbridge.primitives.Duration.fromJsonObject(t1
+		assertEquals(new jrosbridge.primitives.Duration(10, 20),
+				jrosbridge.primitives.Duration.fromJsonObject(t1
 						.toJsonObject().getJsonObject(Duration.FIELD_DATA)));
 
 		assertEquals(Duration.TYPE, t1.getMessageType());
@@ -128,7 +130,7 @@ public class TestDuration {
 	public void testFromJsonObjectNoData() {
 		JsonObject jsonObject = Json.createObjectBuilder().build();
 		Duration data = Duration.fromJsonObject(jsonObject);
-		assertEquals(new edu.wpi.rail.jrosbridge.primitives.Duration(),
+		assertEquals(new jrosbridge.primitives.Duration(),
 				data.getData());
 	}
 }

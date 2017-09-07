@@ -8,14 +8,17 @@ import java.util.TimerTask;
 import javax.json.Json;
 import javax.json.JsonObject;
 
-import edu.wpi.rail.jrosbridge.callback.CallServiceCallback;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.callback.ServiceCallback;
-import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import edu.wpi.rail.jrosbridge.services.ServiceResponse;
+import jrosbridge.JRosbridge;
+import jrosbridge.Ros;
+import jrosbridge.Service;
+import jrosbridge.callback.CallServiceCallback;
+import jrosbridge.callback.ServiceCallback;
+import jrosbridge.services.ServiceRequest;
+import jrosbridge.services.ServiceResponse;
 
 public class TestService {
 

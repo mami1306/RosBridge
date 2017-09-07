@@ -8,8 +8,10 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
-import edu.wpi.rail.jrosbridge.primitives.Primitive;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.std.String;
+import jrosbridge.messages.std.UInt64;
+import jrosbridge.primitives.Primitive;
 
 public class TestUInt64 {
 

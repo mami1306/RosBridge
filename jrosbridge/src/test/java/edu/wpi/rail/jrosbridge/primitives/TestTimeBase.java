@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import jrosbridge.primitives.TimeBase;
+
 public class TestTimeBase {
 
 	private TimeBase<DummyTimeBase> t1, t2, t3, t4;

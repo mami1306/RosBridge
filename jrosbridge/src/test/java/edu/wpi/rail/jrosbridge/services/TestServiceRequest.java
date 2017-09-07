@@ -7,6 +7,8 @@ import javax.json.Json;
 import org.junit.Before;
 import org.junit.Test;
 
+import jrosbridge.services.ServiceRequest;
+
 public class TestServiceRequest {
 
 	private ServiceRequest empty, s1, s2, s3, s4;

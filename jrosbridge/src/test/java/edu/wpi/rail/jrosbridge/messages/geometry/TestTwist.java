@@ -8,7 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.geometry.Twist;
+import jrosbridge.messages.geometry.Vector3;
 
 public class TestTwist {
 

@@ -9,13 +9,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.JRosbridge;
-import edu.wpi.rail.jrosbridge.Ros;
-import edu.wpi.rail.jrosbridge.callback.ServiceCallback;
-import edu.wpi.rail.jrosbridge.callback.TopicCallback;
-import edu.wpi.rail.jrosbridge.handler.RosHandler;
-import edu.wpi.rail.jrosbridge.messages.Message;
-import edu.wpi.rail.jrosbridge.services.ServiceResponse;
+import jrosbridge.JRosbridge;
+import jrosbridge.Ros;
+import jrosbridge.callback.ServiceCallback;
+import jrosbridge.callback.TopicCallback;
+import jrosbridge.handler.RosHandler;
+import jrosbridge.messages.Message;
+import jrosbridge.services.ServiceResponse;
 
 public class TestRos {
 

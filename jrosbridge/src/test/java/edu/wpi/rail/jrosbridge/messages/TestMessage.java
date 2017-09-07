@@ -7,6 +7,8 @@ import javax.json.Json;
 import org.junit.Before;
 import org.junit.Test;
 
+import jrosbridge.messages.Message;
+
 public class TestMessage {
 
 	private Message empty, m1, m2, m3, m4;

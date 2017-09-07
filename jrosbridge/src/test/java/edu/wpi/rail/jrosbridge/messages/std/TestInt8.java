@@ -8,7 +8,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.messages.Message;
+import jrosbridge.messages.Message;
+import jrosbridge.messages.std.Int8;
+import jrosbridge.messages.std.String;
 
 public class TestInt8 {
 

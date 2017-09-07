@@ -8,7 +8,7 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.wpi.rail.jrosbridge.JsonWrapper;
+import jrosbridge.JsonWrapper;
 
 public class TestJsonWrapper {
 

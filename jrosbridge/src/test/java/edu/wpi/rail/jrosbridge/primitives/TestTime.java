@@ -11,6 +11,9 @@ import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 
+import jrosbridge.primitives.Time;
+import jrosbridge.primitives.TimeBase;
+
 public class TestTime {
 
 	private Time empty, t1, t2, t3;
