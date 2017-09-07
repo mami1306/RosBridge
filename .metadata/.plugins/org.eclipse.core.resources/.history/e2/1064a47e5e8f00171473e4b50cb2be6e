@@ -1,0 +1,20 @@
+package main;
+
+import edu.wpi.rail.jrosbridge.*;
+
+public class RosWrapper {
+
+	private Ros rosObject;
+	
+	public RosWrapper() {
+		rosObject = new Ros("localhost");
+	}
+	
+	public RosWrapper(String host) {
+		rosObject = new Ros(host);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Just a runnable Library ;)");
+	}
+}
