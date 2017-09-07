@@ -35,7 +35,7 @@ public class RosWrapper {
 			return result;
 		}
 		else{
-			System.out.println("Disconnection unsuccessfull");
+			System.out.println("Disconnection unsuccessfull!");
 			return result;
 		}	
 	}
