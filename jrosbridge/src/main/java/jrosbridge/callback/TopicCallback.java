@@ -9,8 +9,10 @@ import jrosbridge.messages.Message;
  * @author Russell Toris - russell.toris@gmail.com
  * @version April 1, 2014
  */
-public interface TopicCallback {
-
+public class TopicCallback {
+	
+	Message message;
+	
 	/**
 	 * This function is called when an incoming message is received for a given
 	 * topic. No ROS type checking is done on the internal message data.
@@ -18,5 +20,12 @@ public interface TopicCallback {
 	 * @param message
 	 *            The message that was received.
 	 */
-	public void handleMessage(Message message);
+	public void handleMessage(Message message){
+		System.out.println("Ich wurde aufgerufen");
+		this.message = message;
+	}
+	
+	public Message getMessage() {
+		return message;
+	}
 }
