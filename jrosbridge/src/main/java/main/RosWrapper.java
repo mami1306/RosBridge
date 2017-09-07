@@ -31,7 +31,7 @@ public class RosWrapper {
 		System.out.println("Trying to disconnect from Rosbridge");
 		boolean result = this.rosObject.disconnect();
 		if(result) {
-			System.out.println("Disconnection successfull");
+			System.out.println("Disconnection successfull!");
 			return result;
 		}
 		else{
