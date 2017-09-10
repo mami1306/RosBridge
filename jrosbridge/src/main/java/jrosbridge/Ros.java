@@ -313,7 +313,7 @@ public class Ros {
 			// parse the JSON
 			JsonObject jsonObject = Json
 					.createReader(new StringReader(message)).readObject();
-
+			
 			// check for compression
 			String op = jsonObject.getString(JRosbridge.FIELD_OP);
 			if (op.equals(JRosbridge.OP_CODE_PNG)) {
@@ -342,7 +342,7 @@ public class Ros {
 		} catch (NullPointerException | IOException | JsonParsingException e) {
 			// only occurs if there was an error with the JSON
 			System.err.println("[WARN]: Invalid incoming rosbridge protocol: "
-					+ message);
+					+ message + e);
 		}
 	}
 
@@ -368,6 +368,10 @@ public class Ros {
 				for (TopicCallback cb : callbacks) {
 					cb.handleMessage(msg);
 					this.subscribedMessages.put(topic, cb.getMessage());
+					this.subscribedMessages.get(topic).setIsNew(true);
+					System.out.println(this.subscribedMessages.size());
+					System.out.println(this.subscribedMessages.get(topic).isNew());
+					System.out.println("Topic: " + topic);
 				}
 			}
 		} else if (op.equals(JRosbridge.OP_CODE_SERVICE_RESPONSE)) {
@@ -546,7 +550,16 @@ public class Ros {
 		callServiceCallbacks.remove(serviceName);
 	}
 	
-	public Message getSubscribedMessage(String topic) {
+	public Message waitForNewMessage(String topic) {
+		while(this.subscribedMessages != null && !this.subscribedMessages.get(topic).isNew()) {
+			try {
+				System.out.println("Schlafbereich!");
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				System.err.println("Error while waiting for a Message: " + e.getMessage());
+			}
+		}
+		subscribedMessages.get(topic).setIsNew(false);
 		return this.subscribedMessages.get(topic);
 	}
 }

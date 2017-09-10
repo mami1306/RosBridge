@@ -2,6 +2,7 @@ package jrosbridge.callback;
 
 import jrosbridge.messages.Message;
 import jrosbridge.messages.geometry.*;
+import jrosbridge.messages.sensor.*;
 import jrosbridge.messages.std.*;
 import jrosbridge.messages.std.Byte;
 
@@ -31,7 +32,7 @@ public class TopicCallback {
 	 *            The message that was received.
 	 */
 	public void handleMessage(Message message){
-		System.out.println("Published from Ros: " + message.toString());
+		System.out.println("Published from Ros-Topic: " + this.type);
 		
 		switch(type){
 		case "geometry_msgs/Point":
@@ -253,6 +254,10 @@ public class TopicCallback {
 		case "std_msgs/UInt8MultiArray":
 			UInt8MultiArray uInt8MultiArray = UInt8MultiArray.fromJsonString(message.toString());
 			this.message = uInt8MultiArray;
+			break;
+		case "sensor_msgs/JointState":
+			JointState jointState = JointState.fromJsonString(message.toString());
+			this.message = jointState;
 			break;
 		default:
 			System.out.println("[WARN]: No matching message type.");

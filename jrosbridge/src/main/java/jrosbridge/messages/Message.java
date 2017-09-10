@@ -95,6 +95,10 @@ public class Message extends JsonWrapper {
 		return this.messageType;
 	}
 	
+	public void setIsNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	
 	public boolean isNew() {
 		return isNew;
 	}
