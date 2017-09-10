@@ -23,6 +23,7 @@ public class Message extends JsonWrapper {
 	public static final String EMPTY_MESSAGE = JsonWrapper.EMPTY_JSON;
 
 	private String messageType;
+	private boolean isNew;
 
 	/**
 	 * Create a new, empty message. The type will be set to the empty string.
@@ -82,6 +83,7 @@ public class Message extends JsonWrapper {
 		super(jsonObject);
 		// set the type
 		this.messageType = messageType;
+		this.isNew = false;
 	}
 
 	/**
@@ -91,6 +93,10 @@ public class Message extends JsonWrapper {
 	 */
 	public String getMessageType() {
 		return this.messageType;
+	}
+	
+	public boolean isNew() {
+		return isNew;
 	}
 
 	/**
