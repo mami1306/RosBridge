@@ -76,9 +76,11 @@ public class Ros {
 
 	// keeps track of callback functions for a given advertised service
 	private final HashMap<String, CallServiceCallback> callServiceCallbacks;
-
+	
 	// keeps track of handlers for this connection
 	private final ArrayList<RosHandler> handlers;
+	
+	private final HashMap<String, Message> subscribedMessages;
 
 	/**
 	 * Create a connection to ROS with the default hostname and port. A call to
@@ -135,6 +137,7 @@ public class Ros {
 		this.serviceCallbacks = new HashMap<String, ServiceCallback>();
 		this.callServiceCallbacks = new HashMap<String, CallServiceCallback>();
 		this.handlers = new ArrayList<RosHandler>();
+		this.subscribedMessages = new HashMap<String, Message>();
 	}
 
 	/**
@@ -359,11 +362,12 @@ public class Ros {
 
 			// call each callback with the message
 			ArrayList<TopicCallback> callbacks = topicCallbacks.get(topic);
+			
 			if (callbacks != null) {
-				Message msg = new Message(
-						jsonObject.getJsonObject(JRosbridge.FIELD_MESSAGE));
+				Message msg = new Message(jsonObject.getJsonObject(JRosbridge.FIELD_MESSAGE));
 				for (TopicCallback cb : callbacks) {
 					cb.handleMessage(msg);
+					this.subscribedMessages.put(topic, cb.getMessage());
 				}
 			}
 		} else if (op.equals(JRosbridge.OP_CODE_SERVICE_RESPONSE)) {
@@ -540,5 +544,9 @@ public class Ros {
 	public void deregisterCallServiceCallback(String serviceName) {
 		// remove the callback
 		callServiceCallbacks.remove(serviceName);
+	}
+	
+	public Message getSubscribedMessage(String topic) {
+		return this.subscribedMessages.get(topic);
 	}
 }

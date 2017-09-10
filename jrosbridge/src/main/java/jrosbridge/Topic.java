@@ -177,7 +177,8 @@ public class Topic {
 	 *            The callback that will be called when incoming messages are
 	 *            received.
 	 */
-	public void subscribe(TopicCallback cb) {
+	public void subscribe() {
+		TopicCallback cb = new TopicCallback(this.type);
 		// register the callback function
 		this.ros.registerTopicCallback(this.name, cb);
 		// internal reference used during unsubscribe
@@ -194,6 +195,7 @@ public class Topic {
 				.add(JRosbridge.FIELD_TOPIC, this.name)
 				.add(JRosbridge.FIELD_COMPRESSION, this.compression.toString())
 				.add(JRosbridge.FIELD_THROTTLE_RATE, this.throttleRate).build();
+
 		this.ros.send(call);
 
 		// set the flag indicating we have subscribed
@@ -277,8 +279,10 @@ public class Topic {
 		JsonObject call = Json.createObjectBuilder()
 				.add(JRosbridge.FIELD_OP, JRosbridge.OP_CODE_PUBLISH)
 				.add(JRosbridge.FIELD_ID, publishId)
+				.add(JRosbridge.FIELD_TYPE, this.type)
 				.add(JRosbridge.FIELD_TOPIC, this.name)
 				.add(JRosbridge.FIELD_MESSAGE, message.toJsonObject()).build();
+
 		this.ros.send(call);
 	}
 }
