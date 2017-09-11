@@ -551,7 +551,8 @@ public class Ros {
 	}
 	
 	public Message waitForNewMessage(String topic) {
-		while(this.subscribedMessages != null && !this.subscribedMessages.get(topic).isNew()) {
+		System.out.println(topic);
+		/*while(this.subscribedMessages.get(topic) != null && !this.subscribedMessages.get(topic).isNew()) {
 			try {
 				System.out.println("Schlafbereich!");
 				Thread.sleep(1);
@@ -559,7 +560,8 @@ public class Ros {
 				System.err.println("Error while waiting for a Message: " + e.getMessage());
 			}
 		}
-		subscribedMessages.get(topic).setIsNew(false);
-		return this.subscribedMessages.get(topic);
+		subscribedMessages.get(topic).setIsNew(false);*/
+		return new Message("{\"data\": \"hello, world!\"}");
+		//return this.subscribedMessages.get(topic);
 	}
 }
