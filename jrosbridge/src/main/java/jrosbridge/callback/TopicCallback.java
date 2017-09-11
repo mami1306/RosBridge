@@ -215,7 +215,7 @@ public class TopicCallback {
 			MultiArrayLayout multiArrayLayout = MultiArrayLayout.fromJsonString(message.toString());
 			this.message = multiArrayLayout;
 			break;
-		case "String":
+		case "std_msgs/String":
 			jrosbridge.messages.std.String string = jrosbridge.messages.std.String.fromJsonString(message.toString());
 			this.message = string;
 			break;
